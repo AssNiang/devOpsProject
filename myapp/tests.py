@@ -1,14 +1,10 @@
 # myapp/tests.py
-from django.test import TestCase
-from django.urls import reverse
 from .models import Visit
-import json
-
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
+import json
 
 
 class VisitCountTestCase(TestCase):
