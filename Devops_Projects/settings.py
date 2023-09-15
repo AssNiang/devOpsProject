@@ -79,17 +79,17 @@ WSGI_APPLICATION = 'Devops_Projects.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'devops',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'papa',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',  # Si PostgreSQL est sur votre machine locale
         'PORT': '',  # Laissez vide pour utiliser le port par défaut (5432)
     },
     'test': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'papa',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',  # Si PostgreSQL est sur votre machine locale
         'PORT': '',  # Laissez vide pour utiliser le port par défaut (5432)
     }
