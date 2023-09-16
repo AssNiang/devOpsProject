@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from rest_framework import generics, status
 
 from .forms import UserForm
+
 # Create your views here.
 
 from .models import User, Visit
@@ -14,9 +15,9 @@ def user_list(request):
     users = User.objects.all()
     if not users:
         message = "Il n'y a pas d'utilisateurs pour le moment."
-        return render(request, 'user/user_list.html', {'message': message})
+        return render(request, "user/user_list.html", {"message": message})
 
-    return render(request, 'user/user_list.html', {'users': users})
+    return render(request, "user/user_list.html", {"users": users})
 
 
 def visit_count(request):
@@ -25,19 +26,21 @@ def visit_count(request):
         visit = Visit.objects.create()
     visit.count += 1
     visit.save()
-    return JsonResponse({'count': visit.count})
+    return JsonResponse({"count": visit.count})
 
 
 def add_user(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('user-list')  # Redirect to the user list view after adding the user.
+            return redirect(
+                "user-list"
+            )  # Redirect to the user list view after adding the user.
     else:
         form = UserForm()
 
-    return render(request, 'user/add_user.html', {'form': form})
+    return render(request, "user/add_user.html", {"form": form})
 
 
 class UserList(generics.ListAPIView):
@@ -56,12 +59,18 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def add_user_api(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse('OK')  # Retourne 'OK' lorsque l'utilisateur est créé avec succès.
+            return HttpResponse(
+                "OK"
+            )  # Retourne 'OK' lorsque l'utilisateur est créé avec succès.
         else:
-            return HttpResponseBadRequest('Bad Request')  # Retourne 'Bad Request' si le formulaire n'est pas valide.
+            return HttpResponseBadRequest(
+                "Bad Request"
+            )  # Retourne 'Bad Request' si le formulaire n'est pas valide.
     else:
-        return HttpResponseBadRequest('Invalid method')  # Retourne 'Invalid method' si la méthode n'est pas POST.
+        return HttpResponseBadRequest(
+            "Invalid method"
+        )  # Retourne 'Invalid method' si la méthode n'est pas POST.
