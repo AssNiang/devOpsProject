@@ -9,3 +9,4 @@ bootstrap4
 django~=4.1
 black
 ruff
+pytest
