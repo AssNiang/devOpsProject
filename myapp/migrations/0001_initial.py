@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                         validators=[
                             django.core.validators.MinLengthValidator(
                                 limit_value=3,
-                                message="Le nom d'utilisateur doit être > à 3 caractères.",
+                                message="Le username doit être > à 3 caractères.",
                             )
                         ],
                     ),
