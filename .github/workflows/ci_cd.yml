@@ -57,7 +57,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          sudo docker build -t gals3nb0y/devops_project .
+          sudo docker build -t gals3nb0y/devops_project:latest .
           #sudo docker tag myapp:latest gals3nb0y/devops_project:latest
 
       - name: Push Docker image
