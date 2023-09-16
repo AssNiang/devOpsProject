@@ -1,13 +1,14 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from rest_framework import generics, status
-
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
 from .forms import UserForm
 
 # Create your views here.
 
 from .models import User, Visit
-from .serializers import UserSerializer, VisitSerializer
+from .serializers import UserSerializer
 from rest_framework.response import Response
 
 
@@ -51,10 +52,6 @@ class UserList(generics.ListAPIView):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-from django.http import HttpResponse, HttpResponseBadRequest
-from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
