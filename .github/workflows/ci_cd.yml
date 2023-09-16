@@ -22,7 +22,7 @@ jobs:
             ports:
               - 5432:5432
     env:
-      DATABASE_DB_HOST: localhost
+      DJANGO_DB_HOST: localhost
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
