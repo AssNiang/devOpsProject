@@ -66,5 +66,5 @@ jobs:
       run: ruff check .
 
     - name: Run pytest inside 
-      run: pytest myapp/tests.py
+      run: pytest tests.py
         
