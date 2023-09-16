@@ -85,7 +85,7 @@ DATABASES = {
         "NAME": "postgres",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "localhost",  # Si PostgreSQL est sur votre machine locale
+        "HOST": os.environ.get('DJANGO_DB_HOST','db'),  # Si PostgreSQL est sur votre machine locale
         "PORT": "",  # Laissez vide pour utiliser le port par défaut (5432)
     },
     "test": {
@@ -93,7 +93,7 @@ DATABASES = {
         "NAME": "postgres",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "localhost",  # Si PostgreSQL est sur votre machine locale
+        "HOST": os.environ.get('DJANGO_DB_HOST','db'),  # Si PostgreSQL est sur votre machine locale
         "PORT": "",  # Laissez vide pour utiliser le port par défaut (5432)
     },
 }
