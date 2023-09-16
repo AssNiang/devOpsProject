@@ -44,7 +44,7 @@ jobs:
         run: black . --check
   
       - name: Check the linting
-        run: flake8 check .
+        run: ruff check .
   
       - name: Run pytest inside 
         run: python manage.py test
