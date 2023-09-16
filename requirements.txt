@@ -3,6 +3,7 @@ Django
 djangorestframework==3.14.0
 flake8==6.1.0
 psycopg2==2.9.7
+flake8==6.1.0
 pytz==2023.3.post1
 sqlparse 
 tzdata
@@ -10,3 +11,4 @@ bootstrap4
 django~=4.1
 black
 ruff
+pytest
