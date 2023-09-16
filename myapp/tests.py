@@ -23,7 +23,7 @@ class VisitCountTestCase(TestCase):
 
         # Vérifiez que le champ 'count' dans la réponse est égal à 1 (augmenté de 1)
         self.assertEqual(data["count"], 1)
-        
+
         updated_visit = Visit.objects.get(pk=visit.pk)
         self.assertEqual(updated_visit.count, 1)
 
