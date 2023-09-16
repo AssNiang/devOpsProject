@@ -62,4 +62,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          sudo docker push gals3nb0y/devops_project
+          sudo docker push gals3nb0y/devops_project:latest 
