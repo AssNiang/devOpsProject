@@ -1,0 +1,70 @@
+
+# name: CI/CD Pipeline
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     container: python:3.11.4-bullseye
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Docker Compose
+#         run: |
+#           sudo docker-compose up -d
+#           sudo docker-compose exec web python manage.py migrate
+
+#       - name: Build Docker image
+#         run: |
+#           sudo docker build -t myapp:latest .
+#           sudo docker tag myapp:latest docker.io/gals3nb0y/devops_project/myapp:latest
+#         env:
+#           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+#       - name: Login to Docker Hub
+#         run: |
+#           echo $DOCKER_PASSWORD | sudo docker login --username $DOCKER_USERNAME --password-stdin
+#         env:
+#           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+#       - name: Push Docker image
+#         run: |
+#           sudo docker push docker.io/gals3nb0y/devops_project/myapp:latest
+
+name: Python package
+
+on: 
+  push:
+    branches:  [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build-ci:
+    runs-on:  ubuntu-latest 
+    container: python:3.11.4-bullseye
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install dependencies 
+      run: pip install -r requirements.txt
+    
+    - name: Check the formatting
+      run: black . --check
+
+    - name: Check the linting
+      run: ruff check .
+
+    - name: Run pytest inside 
+      run: pytest test.py
+        
