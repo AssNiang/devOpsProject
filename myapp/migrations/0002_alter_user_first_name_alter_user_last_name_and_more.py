@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 validators=[
                     django.core.validators.MinLengthValidator(
                         limit_value=2,
-                        message="Le nom de famille doit comporter au moins 2 caractères.",
+                        message="Le nom de famille doit être > à 2 caractères.",
                     )
                 ],
             ),
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 validators=[
                     django.core.validators.MinLengthValidator(
                         limit_value=3,
-                        message="Le nom d'utilisateur doit comporter au moins 3 caractères.",
+                        message="Le nom d'utilisateur doit être > à 3 caractères.",
                     )
                 ],
             ),
